@@ -2,8 +2,26 @@ from tkinter import *
 from tkinter import ttk
 import random
 
-
+score_human_ = 0
+score_computer_ = 0
 _values = ['stone', 'paper', 'scissor']
+
+
+def score_human():
+    global score_human_
+    score_human_ += 1
+
+
+def score_computer():
+    global score_computer_
+    score_computer_ += 1
+
+
+def show_score():
+    global score_human_
+    global score_computer_
+    winlabel.config(text=f'the score of you is {score_human_}'
+                    f'and computer is {score_computer_}')
 
 
 def done():
@@ -12,16 +30,22 @@ def done():
         winlabel.config(text='its a draw')
     elif r == _values[0] and cmbo.get() == _values[1]:
         winlabel.config(text='you win')
+        score_human()
     elif r == _values[0] and cmbo.get() == _values[2]:
         winlabel.config(text='you lost')
+        score_computer()
     elif r == _values[1] and cmbo.get() == _values[0]:
         winlabel.config(text='you win')
+        score_human()
     elif r == _values[1] and cmbo.get() == _values[2]:
         winlabel.config(text='you lost')
+        score_computer()
     elif r == _values[2] and cmbo.get() == _values[0]:
         winlabel.config(text='you win')
+        score_human()
     elif r == _values[2] and cmbo.get() == _values[1]:
         winlabel.config(text='you lost')
+        score_computer()
 
 
 main = Tk('stone,paper,scissor')
@@ -45,6 +69,6 @@ cmbo.current(0)
 cmbo.pack()
 # button
 Button(main, text='set', activebackground='green', command=done).pack()
-
+Button(main, text='score', activebackground='green', command=show_score).pack()
 winlabel.pack()
 main.mainloop()
