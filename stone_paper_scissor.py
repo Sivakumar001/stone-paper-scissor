@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 import random
-
+number_of_plays = 0
 score_human_ = 0
 score_computer_ = 0
 _values = ['stone', 'paper', 'scissor']
@@ -24,7 +24,24 @@ def show_score():
                     f'and computer is {score_computer_}')
 
 
+def reset_score():
+    global score_human_
+    global score_computer_
+    global number_of_plays
+    winlabel.config(text='the score of you and the computer has been reset')
+    score_human_ = 0
+    score_computer_ = 0
+    number_of_plays = 0
+
+
+def number_of_play():
+    global number_of_plays
+    winlabel.config(text=f'the total number of plays is {number_of_plays}')
+
+
 def done():
+    global number_of_plays
+    number_of_plays += 1
     r = random.choice(_values)
     if r == cmbo.get():
         winlabel.config(text='its a draw')
@@ -48,7 +65,8 @@ def done():
         score_computer()
 
 
-main = Tk('stone,paper,scissor')
+main = Tk()
+main.title('Stone Paper Scissor')
 main.config(bg='light grey')
 main.geometry('300x300')
 
@@ -70,5 +88,9 @@ cmbo.pack()
 # button
 Button(main, text='set', activebackground='green', command=done).pack()
 Button(main, text='score', activebackground='green', command=show_score).pack()
+Button(main, text='reset',
+       activebackground='green', command=reset_score).pack()
+Button(main, text='plays', activebackground='green',
+       command=number_of_play).pack()
 winlabel.pack()
 main.mainloop()
