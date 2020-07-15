@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import ttk
 import random
+import time
+
 number_of_plays = 0
 score_human_ = 0
 score_computer_ = 0
@@ -63,6 +65,7 @@ def done():
     elif r == _values[2] and cmbo.get() == _values[1]:
         winlabel.config(text='you lost')
         score_computer()
+    time.sleep(0.5)
 
 
 main = Tk()
