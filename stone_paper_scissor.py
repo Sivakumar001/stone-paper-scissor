@@ -1,87 +1,89 @@
 from tkinter import *
 from tkinter import ttk
+from PIL import ImageTk, Image
 import random
-import time
 
-number_of_plays = 0
-score_human_ = 0
-score_computer_ = 0
+
 _values = ['stone', 'paper', 'scissor']
-
-
-def score_human():
-    global score_human_
-    score_human_ += 1
-
-
-def score_computer():
-    global score_computer_
-    score_computer_ += 1
-
-
-def show_score():
-    global score_human_
-    global score_computer_
-    winlabel.config(text=f'the score of you is {score_human_}'
-                    f'and computer is {score_computer_}')
-
-
-def reset_score():
-    global score_human_
-    global score_computer_
-    global number_of_plays
-    winlabel.config(text='the score of you and the computer has been reset')
-    score_human_ = 0
-    score_computer_ = 0
-    number_of_plays = 0
-
-
-def number_of_play():
-    global number_of_plays
-    winlabel.config(text=f'the total number of plays is {number_of_plays}')
+cmpoints = 0
+playpoints = 0
 
 
 def done():
-    global number_of_plays
-    number_of_plays += 1
+    global cmpoints, playpoints
     r = random.choice(_values)
-    if r == cmbo.get():
+    c = cmbo.get()
+    if r == _values[0]:
+        cmpimglabel.config(image=stoneimg)
+    if r == _values[1]:
+        cmpimglabel.config(image=paperimg)
+    if r == _values[2]:
+        cmpimglabel.config(image=scissorimg)
+    if c == _values[0]:
+        playerimglabel.config(image=stoneimg)
+    if c == _values[1]:
+        playerimglabel.config(image=paperimg)
+    if c == _values[2]:
+        playerimglabel.config(image=scissorimg)
+    if r == c:
         winlabel.config(text='its a draw')
-    elif r == _values[0] and cmbo.get() == _values[1]:
+    elif r == _values[0] and c == _values[1]:
         winlabel.config(text='you win')
-        score_human()
-    elif r == _values[0] and cmbo.get() == _values[2]:
+        playpoints = playpoints + 1
+    elif r == _values[0] and c == _values[2]:
         winlabel.config(text='you lost')
-        score_computer()
-    elif r == _values[1] and cmbo.get() == _values[0]:
+        cmpoints = cmpoints + 1
+    elif r == _values[1] and c == _values[0]:
+        winlabel.config(text='you lost')
+        cmpoints = cmpoints + 1
+    elif r == _values[1] and c == _values[2]:
         winlabel.config(text='you win')
-        score_human()
-    elif r == _values[1] and cmbo.get() == _values[2]:
-        winlabel.config(text='you lost')
-        score_computer()
-    elif r == _values[2] and cmbo.get() == _values[0]:
+        playpoints = playpoints + 1
+    elif r == _values[2] and c == _values[0]:
         winlabel.config(text='you win')
-        score_human()
-    elif r == _values[2] and cmbo.get() == _values[1]:
+        playpoints = playpoints + 1
+    elif r == _values[2] and c == _values[1]:
         winlabel.config(text='you lost')
-        score_computer()
-    time.sleep(0.5)
+        cmpoints = cmpoints + 1
+    playerscorelabel.config(text=f'player:{playpoints}',
+                            font='arial 14', bg='light grey')
+    compscorelabel.config(text=f'computer:{cmpoints}',
+                          font='arial 14', bg='light grey')
 
 
 main = Tk()
-main.title('Stone Paper Scissor')
+main.title('jankenpon')
 main.config(bg='light grey')
-main.geometry('300x300')
-
+iconpicture = ImageTk.PhotoImage(file='resources/jankenponicon.png')
+main.iconphoto(False, iconpicture)
+main.geometry('500x500')
+main.resizable(0, 0)
 
 # labelling values
-Label(main, text='stone,paper,scissor', fg='blue',
-      bg='light grey', font='timesnewroman 14 bold').pack()
+Label(main, text='Jankenpon', fg='blue',
+      bg='light grey', font='timesnewroman 18 bold').pack()
 Label(main, text='enter your choice', bg='light grey').pack()
-winlabel = Label(main, text='your win is declared here', bg='light grey')
-
+winlabel = Label(main, text='your win is declared here',
+                 bg='light grey', font='arial 18')
+playerscorelabel = Label(main, font='arial 14', bg='light grey')
+compscorelabel = Label(main, font='arial 14', bg='light grey')
 # options
 # option commands
+playerimglabel = Label(main, text='hello there i am player', bg='light grey')
+cmpimglabel = Label(main, text='hello there i am computer', bg='light grey')
+
+stoneimg = Image.open('resources/stone.jpg')
+stoneimg = stoneimg.resize((150, 150))
+stoneimg = ImageTk.PhotoImage(stoneimg)
+
+paperimg = Image.open('resources/paper.jpg')
+paperimg = paperimg.resize((150, 150))
+paperimg = ImageTk.PhotoImage(paperimg)
+
+scissorimg = Image.open('resources/scissors.jpg')
+scissorimg = scissorimg.resize((150, 150))
+scissorimg = ImageTk.PhotoImage(scissorimg)
+
 cmbo = ttk.Combobox(main, state='readonly',
                     values=['stone',
                             'paper',
@@ -89,11 +91,12 @@ cmbo = ttk.Combobox(main, state='readonly',
 cmbo.current(0)
 cmbo.pack()
 # button
-Button(main, text='set', activebackground='green', command=done).pack()
-Button(main, text='score', activebackground='green', command=show_score).pack()
-Button(main, text='reset',
-       activebackground='green', command=reset_score).pack()
-Button(main, text='plays', activebackground='green',
-       command=number_of_play).pack()
-winlabel.pack()
+Button(main, width=10, height=2, text='set',
+       activebackground='green', command=done).place(x=210, y=90)
+
+playerimglabel.place(x=50, y=150)
+cmpimglabel.place(x=300, y=150)
+winlabel.place(x=190, y=400)
+playerscorelabel.place(x=80, y=450)
+compscorelabel.place(x=290, y=450)
 main.mainloop()
