@@ -63,14 +63,15 @@ main.resizable(0, 0)
 Label(main, text='Jankenpon', fg='blue',
       bg='light grey', font='timesnewroman 18 bold').pack()
 Label(main, text='enter your choice', bg='light grey').pack()
-winlabel = Label(main, text='your win is declared here',
-                 bg='light grey', font='arial 18')
-playerscorelabel = Label(main, font='arial 14', bg='light grey')
-compscorelabel = Label(main, font='arial 14', bg='light grey')
+winlabel = Label(main, bg='light grey', font='arial 18')
+playerscorelabel = Label(main, text='player score',
+                         font='arial 14', bg='light grey')
+compscorelabel = Label(main, text='computer score',
+                       font='arial 14', bg='light grey')
 # options
 # option commands
-playerimglabel = Label(main, text='hello there i am player', bg='light grey')
-cmpimglabel = Label(main, text='hello there i am computer', bg='light grey')
+playerimglabel = Label(main, bg='light grey')
+cmpimglabel = Label(main, bg='light grey')
 
 stoneimg = Image.open('resources/stone.jpg')
 stoneimg = stoneimg.resize((150, 150))
