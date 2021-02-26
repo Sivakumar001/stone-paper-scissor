@@ -21,6 +21,7 @@ the output image is displayed here:
 <img src="outputimg/output1.jpg" alt="output 1" height="350px">
 <img src="outputimg/output2.jpg" alt="output 1" height="350px">
 <img src="outputimg/output3.jpg" alt="output 1" height="350px">
+
 ## Contribution
 
 pull request are welcome. for major changes, please open an issue first to discuss what you would like to change.
