@@ -1,3 +1,4 @@
+[![GitHub license](https://img.shields.io/github/license/Sivakumar001/stone-paper-scissor)](https://github.com/Sivakumar001/stone-paper-scissor/blob/master/LICENSE)
 # stone-paper-scissor
 
 its a simple stone paper scissor game made using graphical interface in python using tkinter and PIL(Python Imaging Library)
