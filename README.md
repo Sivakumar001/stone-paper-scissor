@@ -13,14 +13,13 @@ git clone https://github.com/Sivakumar001/stone-paper-scissor.git
 2. To run the code you need to install [pillow](https://pypi.org/project/Pillow/) or use this command to install the requirments in the project folder 
 
 ```bash
-pip install requirments.txt
+pip install -r requirments.txt
 ```
-
 the output image is displayed here:
-
-<img src="outputimg/output1.jpg" alt="output 1" height="350px">
-<img src="outputimg/output2.jpg" alt="output 1" height="350px">
+<hr>
+<img src="outputimg/output1.jpg" alt="output 1" height="350px"><img src="outputimg/output2.jpg" alt="output 1" height="350px">
 <img src="outputimg/output3.jpg" alt="output 1" height="350px">
+<hr>
 
 ## Contribution
 
