@@ -18,6 +18,7 @@ pip install requirments.txt
 
 the output image is displayed here:
 
+<img src="outputimg/output1.jpg" alt="output 1" height="50px">
 ![image](outputimg/output1.jpg)
 ![image](outputimg/output2.jpg)
 ![image](outputimg/output3.jpg)
