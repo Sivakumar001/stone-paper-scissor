@@ -8,17 +8,26 @@ _values = ['stone', 'paper', 'scissor']
 cmpoints = 0
 playpoints = 0
 
+# should have used classes fml
+
+
+def setnew():
+    global cmpoints, playpoints
+    playerscorelabel.config(text="player score")
+    compscorelabel.config(text="computer score")
+    cmpoints, playpoints = (0, 0)
+
 
 def done():
     global cmpoints, playpoints
     r = random.choice(_values)
     c = cmbo.get()
     if r == _values[0]:
-        cmpimglabel.config(image=stoneimg)
+        compimglabel.config(image=stoneimg)
     if r == _values[1]:
-        cmpimglabel.config(image=paperimg)
+        compimglabel.config(image=paperimg)
     if r == _values[2]:
-        cmpimglabel.config(image=scissorimg)
+        compimglabel.config(image=scissorimg)
     if c == _values[0]:
         playerimglabel.config(image=stoneimg)
     if c == _values[1]:
@@ -50,7 +59,7 @@ def done():
     compscorelabel.config(text=f'computer:{cmpoints}',
                           font='arial 14', bg='light grey')
 
-
+# window screen
 main = Tk()
 main.title('jankenpon')
 main.config(bg='light grey')
@@ -71,7 +80,7 @@ compscorelabel = Label(main, text='computer score',
 # options
 # option commands
 playerimglabel = Label(main, bg='light grey')
-cmpimglabel = Label(main, bg='light grey')
+compimglabel = Label(main, bg='light grey')
 
 stoneimg = Image.open('resources/stone.jpg')
 stoneimg = stoneimg.resize((150, 150))
@@ -90,14 +99,17 @@ cmbo = ttk.Combobox(main, state='readonly',
                             'paper',
                             'scissor'])
 cmbo.current(0)
-cmbo.pack()
+cmbo.place(x=190, y=60)
 # button
-Button(main, width=10, height=2, text='set',
-       activebackground='green', command=done).place(x=210, y=90)
+Button(main, width=10, height=2, text='ok',
+       activebackground='green', command=done).place(x=210, y=100)
+Button(main, width=10, text='reset',
+       activebackground='red',
+       command=setnew).place(x=210, y=355)
 
 playerimglabel.place(x=50, y=150)
-cmpimglabel.place(x=300, y=150)
-winlabel.place(x=190, y=400)
+compimglabel.place(x=300, y=150)
+winlabel.place(x=200, y=400)
 playerscorelabel.place(x=80, y=450)
 compscorelabel.place(x=290, y=450)
 main.mainloop()
