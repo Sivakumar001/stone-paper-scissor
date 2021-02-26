@@ -59,9 +59,10 @@ def done():
     compscorelabel.config(text=f'computer:{cmpoints}',
                           font='arial 14', bg='light grey')
 
+
 # window screen
 main = Tk()
-main.title('jankenpon')
+main.title('Stone Paper Scissors')
 main.config(bg='light grey')
 iconpicture = ImageTk.PhotoImage(file='resources/jankenponicon.png')
 main.iconphoto(False, iconpicture)
@@ -69,7 +70,7 @@ main.geometry('500x500')
 main.resizable(0, 0)
 
 # labelling values
-Label(main, text='Jankenpon', fg='blue',
+Label(main, text='Stone Paper Scissors', fg='blue',
       bg='light grey', font='timesnewroman 18 bold').pack()
 Label(main, text='enter your choice', bg='light grey').pack()
 winlabel = Label(main, bg='light grey', font='arial 18')
