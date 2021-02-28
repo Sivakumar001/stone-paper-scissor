@@ -14,7 +14,7 @@ git clone https://github.com/Sivakumar001/stone-paper-scissor.git
 2. To run the code you need to install [pillow](https://pypi.org/project/Pillow/) or use this command to install the requirments in the project folder 
 
 ```bash
-pip install -r requirments.txt
+pip install -r requirements.txt
 ```
 <hr>
 
@@ -30,4 +30,4 @@ The output image is displayed here:
 
 pull request are welcome. for major changes, please open an issue first to discuss what you would like to change.
 
-if you like my project star my repo and feel free to check my other projects too.. :)
+if you like my project star my repo and feel free to check my other projects too..😀
